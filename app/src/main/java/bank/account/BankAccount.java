@@ -1,0 +1,86 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bank.account;
+
+/**
+ *
+ * @author Bryan Sanchez
+ */
+public class BankAccount {
+    private int accountNumber;
+    private float accountBalance;
+    private String customerName;
+    private String email;
+    private String phoneNumber;
+    
+    public BankAccount(int accountNumber, String customerName, String email, String phoneNumber) {
+        this.accountNumber = accountNumber;
+        this.accountBalance = 0;
+        this.customerName = customerName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public float getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(float accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    public void withdrawFunds(float amount) {
+        float newBalance = this.accountBalance - amount;
+        String msg;
+        if (newBalance < 0) {
+            msg = String.format("Withdrawal invalid! Your account balance is %.2f", this.accountBalance);
+            System.out.println(msg);
+        } else {
+            this.accountBalance = newBalance;
+            msg = String.format("Withdrawal successful! Your remaining account balance is %.2f", newBalance);
+            System.out.println(msg);
+        }
+    }
+    
+    public void depositFunds(float amount) {
+        this.accountBalance = this.accountBalance + amount;
+        String msg = String.format("Deposit successful! Your new account balance is %.2f", this.accountBalance);
+        System.out.println(msg);
+    }
+    
+    
+}
