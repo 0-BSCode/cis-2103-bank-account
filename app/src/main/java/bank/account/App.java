@@ -8,9 +8,9 @@ public class App {
     public static void main(String[] args) {
         BankAccount newAccount = new BankAccount(1, "Bryan", "bryan@gmail.com", "01234567");
         
-        newAccount.depositFunds(69.20f);
+        System.out.println(newAccount.depositFunds(69.20f));
         newAccount.withdrawFunds(69.0f);
-        newAccount.withdrawFunds(69.0f);
-
+        System.out.println(newAccount.withdrawFunds(69.0f));
+        System.out.println(newAccount.depositFunds(-2.0f));
     }
 }
