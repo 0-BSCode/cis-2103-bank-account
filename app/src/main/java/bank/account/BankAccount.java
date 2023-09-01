@@ -63,24 +63,37 @@ public class BankAccount {
         this.phoneNumber = phoneNumber;
     }
     
-    public void withdrawFunds(float amount) {
+    public boolean withdrawFunds(float amount) {
+        boolean res = false;
         float newBalance = this.accountBalance - amount;
         String msg;
-        if (newBalance < 0) {
+        if (newBalance < 0 || newBalance >= this.accountBalance) {
             msg = String.format("Withdrawal invalid! Your account balance is %.2f", this.accountBalance);
             System.out.println(msg);
         } else {
             this.accountBalance = newBalance;
             msg = String.format("Withdrawal successful! Your remaining account balance is %.2f", newBalance);
             System.out.println(msg);
+            res = true;
         }
+        
+        return res;
     }
     
-    public void depositFunds(float amount) {
-        this.accountBalance = this.accountBalance + amount;
-        String msg = String.format("Deposit successful! Your new account balance is %.2f", this.accountBalance);
-        System.out.println(msg);
+    public boolean depositFunds(float amount) {
+        boolean res = false;
+        String msg;
+        
+        if (amount > 0) {
+            this.accountBalance = this.accountBalance + amount;
+            msg = String.format("Deposit successful! Your new account balance is %.2f", this.accountBalance);
+            System.out.println(msg);
+            res = true;
+        } else {
+            msg = String.format("Deposit invalid! Your remaining account balance is %.2f", this.accountBalance);
+            System.out.println(msg);
+        }
+        
+        return res;
     }
-    
-    
 }
